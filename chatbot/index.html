@@ -8,6 +8,7 @@
     <title>Chatbot</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
 </head>
 
 <body>
@@ -47,13 +48,14 @@
                             <div class="input-group">
                                 <input id="inputMessage" type="text" class="form-control" placeholder="Message"
                                     aria-label="Message" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
+                                <div id="buttonjkl" class="input-group-append">
                                     <button id="sendMessage" class="btn btn-primary" type="button">Send</button>
                                 </div>
                             </div>
                         </div>
                         <br>
-                        <button id="generatePDF" type="button" class="btn btn-info">Generate PDF with user data</button>
+                        <button id="generatePDF" style="display: none;" type="button" class="btn btn-info">Generate PDF
+                            with user data</button>
                         <script src="scriptchat.js"></script>
                     </div>
                 </div>
