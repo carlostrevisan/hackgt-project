@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="notranslate" translate="no">
 
 <head>
     <meta charset="UTF-8">
@@ -11,14 +11,10 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav" style="background-color: #e3f2fd;">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="/">MentalGT</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
+            <a class="navbar-brand" href="index.html">MentalGT</a>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Home</a></li>
@@ -27,6 +23,8 @@
             </div>
         </div>
     </nav>
+
+    <br><br>
     <header class="masthead" style="">
         <div class="container position-relative px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -35,12 +33,28 @@
                         <h1>
                             Chatbot
                         </h1>
-                        <div>
-                            Chatbot goes here
+                        <div class="card" style="width: 600px; height: 644px;">
+                            <div class="card-header">
+                                Chatbot
+                            </div>
+                            <div style="height: 600px;">
+                                <div id="chatboxDiv" class="p-3" style="max-height: 600px; overflow-y: auto;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-1" style="width: 600px;">
+                            <div class="input-group">
+                                <input id="inputMessage" type="text" class="form-control" placeholder="Message"
+                                    aria-label="Message" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button id="sendMessage" class="btn btn-primary" type="button">Send</button>
+                                </div>
+                            </div>
                         </div>
                         <br>
-                        <button type="button" class="btn btn-primary">Generate PDF with user data</button>
-                        <script src="chatbot/script.js"></script>
+                        <button type="button" class="btn btn-info">Generate PDF with user data</button>
+                        <script src="scriptchat.js"></script>
                     </div>
                 </div>
             </div>
