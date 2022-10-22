@@ -1,3 +1,13 @@
+const botQuestions = ["Hey there! 👋",
+    "Let's start our questionaire!",
+    "To start off, what is your name?",
+    "Uh! what a beautiful name!",
+    "Several questions will appear for you, try to answer in the easiest way for the AI to understand. 🤖",
+    "Be very honest with yourself about your feelings. Your answers will be sent to your therapist to get a better understanding of you. 👌"
+];
+
+let userAnswers = [];
+
 const sendButton = document.getElementById("sendMessage")
 
 sendButton.addEventListener("click", function () {
@@ -11,6 +21,7 @@ document.getElementById("inputMessage").addEventListener("keyup", function (even
     }
 });
 
+let index = 0
 function sendInputMsg() {
     let message = document.getElementById("inputMessage").value
     let div = document.createElement("div")
@@ -27,18 +38,31 @@ function sendInputMsg() {
         msgDiv.append(div);
     }
 
+    userAnswers.push(message);
+
+    console.log(userAnswers)
+
     document.getElementById("inputMessage").value = "";
 
-
-
-    setTimeout(function () { answerOutput() }, randomIntFromInterval(300, 1500))
+    setTimeout(function () {
+        messageOrder(index)
+        index++
+    }, randomIntFromInterval(300, 1500))
 }
 
+function messageOrder(index) {
+    let messageU = botQuestions[index]
+    answerOutput(messageU)
+}
 
-function answerOutput() {
-    let message = messages[counter]
+function answerOutput(messageU) {
+    let message = messageU
     let div = document.createElement("div")
-    div.style = "height: 50px;"
+    if (messageU.length > 60) {
+        div.style = "height: 100px"
+        console.log("hello", messageU)
+    }
+    else div.style = "height: 50px;"
     let msg = document.createElement("button")
     msg.classList.add("btn")
     msg.classList.add("btn-primary")
