@@ -1,5 +1,5 @@
 const botQuestions = ["Hey there! 👋",
-    "Let's start our questionaire!",
+    "Let's start our questionaire?",
     "To start off, what is your name?",
     "Uh! what a beautiful name!",
     "Several questions will appear for you, try to answer in the easiest way for the AI to understand. 🤖",
@@ -21,7 +21,6 @@ document.getElementById("inputMessage").addEventListener("keyup", function (even
     }
 });
 
-let index = 0
 function sendInputMsg() {
     let message = document.getElementById("inputMessage").value
     let div = document.createElement("div")
@@ -45,14 +44,21 @@ function sendInputMsg() {
     document.getElementById("inputMessage").value = "";
 
     setTimeout(function () {
-        messageOrder(index)
-        index++
+        messageOrder()
     }, randomIntFromInterval(300, 1500))
 }
 
-function messageOrder(index) {
-    let messageU = botQuestions[index]
-    answerOutput(messageU)
+let index = 0
+function messageOrder() {
+    answerOutput(botQuestions[index])
+    if (index == 0) {
+        index++
+        answerOutput(botQuestions[index])
+    } else if (index == 4) {
+        index++
+        answerOutput(botQuestions[index])
+    }
+    index++
 }
 
 function answerOutput(messageU) {
@@ -83,5 +89,5 @@ generatePDFBnt.addEventListener("click", function () {
 })
 
 function generatePDF() {
-    alert("no pdf 4 u")
+    alert("PDF")
 }
