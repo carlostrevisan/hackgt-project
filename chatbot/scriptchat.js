@@ -19,7 +19,7 @@ function sendInputMsg() {
     if (message != "") {
         let msg = document.createElement("button")
         msg.classList.add("btn")
-        msg.classList.add("btn-light")
+        msg.classList.add("btn-secondary")
         msg.innerHTML = message;
         msg.style = "float: right;"
         let msgDiv = document.getElementById("chatboxDiv")
@@ -28,4 +28,28 @@ function sendInputMsg() {
     }
 
     document.getElementById("inputMessage").value = "";
+
+
+
+    setTimeout(function () { answerOutput() }, randomIntFromInterval(100, 1500))
+}
+
+function answerOutput() {
+    let message = "?"
+
+    let div = document.createElement("div")
+    div.style = "height: 50px;"
+
+    let msg = document.createElement("button")
+    msg.classList.add("btn")
+    msg.classList.add("btn-primary")
+    msg.innerHTML = message;
+    msg.style = "float: left;"
+    let msgDiv = document.getElementById("chatboxDiv")
+    div.append(msg)
+    msgDiv.append(div);
+}
+
+function randomIntFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
 }
