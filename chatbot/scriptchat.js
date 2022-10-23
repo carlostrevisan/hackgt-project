@@ -110,6 +110,6 @@ generatePDFBnt.addEventListener("click", function () {
 function generatePDF() {
     var doc = new jsPDF()
 
-    doc.text('Hello world!', 10, 10)
-    doc.save('a4.pdf')
+    doc.text(userAnswers, 10, 10)
+    doc.save('patient_feelings.pdf')
 }
