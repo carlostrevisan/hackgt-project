@@ -105,11 +105,16 @@ generatePDFBnt.addEventListener("click", function () {
 })
 
 
-//PDF part
+//let userAnswers = ['Hello', 'Yes!', 'Carlos Trevisan', 'Thanks!', 'Okay!', '18 years old', 'Good', 'I am confident about this project']
 
 function generatePDF() {
-    var doc = new jsPDF()
+    let innerHTML = "<div style=\"font-family: Arial, Helvetica, sans-serif;\"><h1>Patient Information</h1>" +
+        "<h3>Name</h3>" + userAnswers[2] +
+        "<h3>Age</h3>" + userAnswers[5] +
+        "<h3>What is general feeling of the patient?</h3>" + userAnswers[6] +
+        "<h3>What are the symptoms of the patient?</h3>" + userAnswers[7] + "</div>"
 
-    doc.text(userAnswers, 10, 10)
+    var doc = new jsPDF('p', 'mm', 'letter')
+    doc.fromHTML(innerHTML, 20, 20)
     doc.save('patient_feelings.pdf')
 }
