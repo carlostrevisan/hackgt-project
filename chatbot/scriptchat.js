@@ -104,16 +104,31 @@ generatePDFBnt.addEventListener("click", function () {
     generatePDF()
 })
 
+function getSentiment(text) {
+    var sentiment = 0.0;
+    $.ajax({
+        type: "POST",
+        async: false,
+        url: "/get_sentiment",
+        data: { param: text }
+    }).done(function(result){
+        sentiment = result;
+    });
+    return sentiment;
+}
+
 
 //let userAnswers = ['Hello', 'Yes!', 'Carlos Trevisan', 'Thanks!', 'Okay!', '18 years old', 'Good', 'I am confident about this project']
 
 function generatePDF() {
+    var avgSentiment = ((getSentiment(userAnswers[6]) + getSentiment(userAnswers[7]))/2.0).toString();
     let innerHTML = "<div style=\"font-family: Arial, Helvetica, sans-serif;\"><h1>Patient Information</h1>" +
         "<h3>Name</h3>" + userAnswers[2] +
         "<h3>Age</h3>" + userAnswers[5] +
-        "<h3>What is general feeling of the patient?</h3>" + userAnswers[6] +
-        "<h3>What are the symptoms of the patient?</h3>" + userAnswers[7] + "</div>"
-
+        "<h3>What is the general feeling of the patient?</h3>" + userAnswers[6] +
+        "<h3>What are the symptoms of the patient?</h3>" + userAnswers[7] +
+        "<h3>What is the average sentiment score of the patient's responses?</h3>" + avgSentiment
+        + "</div>"
     var doc = new jsPDF('p', 'mm', 'letter')
     doc.fromHTML(innerHTML, 20, 20)
     doc.save('patient_feelings.pdf')
